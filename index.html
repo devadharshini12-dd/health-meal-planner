@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WellNest | Health & Meal Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Authentication -->
+  <section id="authPage" class="auth-layout">
+    <div class="auth-visual">
+      <div class="brand">✚ WellNest</div>
+      <div class="visual-content">
+        <span class="eyebrow">YOUR PERSONAL WELLNESS COMPANION</span>
+        <h1>Small steps.<br>Healthier you.</h1>
+        <p>Build better habits with simple health tracking and balanced daily meals.</p>
+        <div class="benefits">
+          <span>✓ Track your daily health</span>
+          <span>✓ Plan balanced meals</span>
+          <span>✓ Celebrate your progress</span>
+        </div>
+      </div>
+      <p class="copyright">Your wellness journey starts here.</p>
+    </div>
+
+    <div class="auth-panel">
+      <div class="auth-box">
+        <div class="mobile-brand">✚ WellNest</div>
+
+        <div id="registerForm">
+          <span class="eyebrow">GET STARTED</span>
+          <h2>Create your account</h2>
+          <p class="muted">Join WellNest and take charge of your wellness.</p>
+
+          <form id="register">
+            <label for="regName">Full name</label>
+            <input id="regName" type="text" placeholder="Enter your name" required>
+
+            <label for="regEmail">Email address</label>
+            <input id="regEmail" type="email" placeholder="you@example.com" required>
+
+            <label for="regPassword">Password</label>
+            <div class="password-wrap">
+              <input id="regPassword" type="password" minlength="6"
+                     placeholder="At least 6 characters" required>
+              <button type="button" class="eye" data-target="regPassword">Show</button>
+            </div>
+
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" type="password" minlength="6"
+                   placeholder="Re-enter password" required>
+
+            <button class="primary-btn" type="submit">Create account →</button>
+            <p id="registerMessage" class="message" aria-live="polite"></p>
+          </form>
+
+          <p class="switch-text">Already have an account?
+            <button type="button" class="text-btn" id="showLogin">Log in</button>
+          </p>
+        </div>
+
+        <div id="loginForm" hidden>
+          <span class="eyebrow">WELCOME BACK</span>
+          <h2>Good to see you!</h2>
+          <p class="muted">Log in to continue your wellness journey.</p>
+
+          <form id="login">
+            <label for="loginEmail">Email address</label>
+            <input id="loginEmail" type="email" placeholder="you@example.com" required>
+
+            <label for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input id="loginPassword" type="password" placeholder="Enter your password" required>
+              <button type="button" class="eye" data-target="loginPassword">Show</button>
+            </div>
+
+            <button class="primary-btn" type="submit">Log in →</button>
+            <p id="loginMessage" class="message" aria-live="polite"></p>
+          </form>
+
+          <p class="switch-text">New to WellNest?
+            <button type="button" class="text-btn" id="showRegister">Create account</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main application -->
+  <section id="appPage" hidden>
+    <aside class="sidebar">
+      <div class="brand">✚ WellNest</div>
+      <p class="nav-label">WORKSPACE</p>
+      <button class="nav-item active" data-page="dashboard">▦ Overview</button>
+      <button class="nav-item" data-page="health">♡ Health Monitor</button>
+      <button class="nav-item" data-page="meals">♧ Meal Planner</button>
+      <div class="sidebar-bottom">
+        <button id="themeToggle" class="nav-item">◐ Toggle theme</button>
+        <button id="logout" class="nav-item">↪ Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL WELLNESS SPACE</p>
+          <h2 id="pageTitle">Overview</h2>
+        </div>
+        <div class="user-chip"><span>●</span><b id="userName">User</b></div>
+      </header>
+
+      <div id="dashboardPage" class="page">
+        <div class="welcome-banner">
+          <div>
+            <p class="eyebrow">A NEW DAY, A NEW CHANCE</p>
+            <h1 id="welcomeTitle">Welcome back!</h1>
+            <p>Take a moment for yourself. Every healthy choice matters.</p>
+          </div>
+          <div class="banner-icon">🌿</div>
+        </div>
+
+        <div class="section-heading">
+          <div><h3>Your daily snapshot</h3><p>Update your health details every day.</p></div>
+          <span id="todayDate" class="date-pill"></span>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>⚖️</span><p>Weight</p><h2 id="statWeight">—</h2><small>kg</small></article>
+          <article class="stat-card"><span>💧</span><p>Water intake</p><h2 id="statWater">0</h2><small>glasses today</small></article>
+          <article class="stat-card"><span>🌙</span><p>Sleep</p><h2 id="statSleep">—</h2><small>hours</small></article>
+          <article class="stat-card"><span>😊</span><p>Mood</p><h2 id="statMood">—</h2><small>today</small></article>
+        </div>
+
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Daily water goal</h3><p>Stay hydrated throughout the day.</p></div><span>💧</span></div>
+            <div class="progress-track"><div id="waterProgress" class="progress-fill"></div></div>
+            <div class="progress-caption"><b id="waterText">0 / 8 glasses</b><span id="waterPercent">0%</span></div>
+            <button class="primary-btn compact" id="addWater">+ Add a glass</button>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Today's meals</h3><p>Your planned nutrition.</p></div><span>🥗</span></div>
+            <div id="mealSummary" class="meal-summary"></div>
+            <button class="secondary-btn" data-goto="meals">View meal planner →</button>
+          </article>
+        </div>
+
+        <article class="panel recent-panel">
+          <div class="panel-heading"><div><h3>Health history</h3><p>Your recent daily check-ins.</p></div><button id="exportData" class="secondary-btn">Export CSV ↓</button></div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Date</th><th>Weight</th><th>Water</th><th>Sleep</th><th>Mood</th></tr></thead>
+            <tbody id="historyBody"></tbody></table>
+          </div>
+        </article>
+      </div>
+
+      <div id="healthPage" class="page" hidden>
+        <div class="page-intro"><h1>Health Monitor</h1><p>Record your daily wellness details and build healthy habits.</p></div>
+        <form id="healthForm" class="panel form-panel">
+          <h3>Daily health check-in</h3>
+          <p class="muted">Your entries are saved in this browser.</p>
+          <div class="form-grid">
+            <div><label for="weight">Weight (kg)</label><input id="weight" type="number" min="1" max="500" step="0.1" placeholder="e.g. 58.5" required></div>
+            <div><label for="water">Water intake (glasses)</label><input id="water" type="number" min="0" max="50" value="0" required></div>
+            <div><label for="sleep">Sleep (hours)</label><input id="sleep" type="number" min="0" max="24" step="0.5" placeholder="e.g. 7.5" required></div>
+            <div><label for="mood">How do you feel?</label><select id="mood" required><option value="">Choose mood</option><option>😊 Great</option><option>🙂 Good</option><option>😐 Okay</option><option>😔 Low</option><option>😫 Tired</option></select></div>
+            <div class="full-width"><label for="notes">Notes (optional)</label><textarea id="notes" rows="3" placeholder="Energy, exercise, or anything you want to remember..."></textarea></div>
+          </div>
+          <button class="primary-btn" type="submit">Save today's check-in</button>
+          <p id="healthMessage" class="message" aria-live="polite"></p>
+        </form>
+        <article class="panel"><h3>Wellness reminders</h3><div class="reminders"><p>💧 Drink water regularly throughout the day.</p><p>🌙 Maintain a consistent sleep schedule.</p><p>🥦 Add a variety of fruits and vegetables to your meals.</p></div></article>
+      </div>
+
+      <div id="mealsPage" class="page" hidden>
+        <div class="page-intro"><h1>Meal Planner</h1><p>Plan balanced meals that fit your day.</p></div>
+        <div class="meal-controls panel">
+          <div><label for="mealDate">Plan date</label><input id="mealDate" type="date"></div>
+          <button class="secondary-btn" id="suggestMeals">Suggest healthy meals</button>
+        </div>
+        <div class="meal-grid">
+          <article class="meal-card"><div class="meal-art breakfast-art">🌅</div><div class="meal-body"><span class="meal-tag">START YOUR DAY</span><h3>Breakfast</h3><label for="breakfast">Your meal</label><textarea id="breakfast" rows="3" placeholder="e.g. Oats, banana and milk"></textarea></div></article>
+          <article class="meal-card"><div class="meal-art lunch-art">🥗</div><div class="meal-body"><span class="meal-tag">MIDDAY FUEL</span><h3>Lunch</h3><label for="lunch">Your meal</label><textarea id="lunch" rows="3" placeholder="e.g. Rice, dal and vegetables"></textarea></div></article>
+          <article class="meal-card"><div class="meal-art snack-art">🍎</div><div class="meal-body"><span class="meal-tag">A LITTLE BOOST</span><h3>Snacks</h3><label for="snacks">Your snack</label><textarea id="snacks" rows="3" placeholder="e.g. Fruit and nuts"></textarea></div></article>
+          <article class="meal-card"><div class="meal-art dinner-art">🌙</div><div class="meal-body"><span class="meal-tag">END THE DAY WELL</span><h3>Dinner</h3><label for="dinner">Your meal</label><textarea id="dinner" rows="3" placeholder="e.g. Chapati and vegetable curry"></textarea></div></article>
+        </div>
+        <div class="meal-actions"><p id="mealMessage" class="message" aria-live="polite"></p><button class="primary-btn" id="saveMeals">Save meal plan ✓</button></div>
+        <article class="panel"><h3>Simple balanced eating tips</h3><div class="reminders"><p>🥦 Include different-coloured vegetables and fruit.</p><p>🥚 Add protein sources such as beans, lentils, eggs, or tofu.</p><p>🌾 Choose whole grains when practical and enjoy varied foods.</p></div></article>
+      </div>
+
+      <footer>Made with care by WellNest <span>•</span> Your wellness, your journey.</footer>
+    </main>
+  </section>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
